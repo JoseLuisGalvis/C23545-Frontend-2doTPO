@@ -1,0 +1,26 @@
+.brand {
+    height: 80px;
+}
+  
+.card-img {
+    height: 800px;
+}
+  
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+  
+.footer {
+    min-height: 80px;
+    background: rgb(18, 69, 99);
+}
+  
+.navbar {
+    background: rgb(67, 65, 65);
+}
