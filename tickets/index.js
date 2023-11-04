@@ -35,7 +35,11 @@ const handleChange = (parm) => {
         const validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 	
 	    if ( !validEmail.test(parm.target.value) ){
-		    alert('El Email ingresado es inválido');
+		   // alert('El Email ingresado es inválido');
+           const alertSummary = `
+                <p class="alert alert-danger w-100">El Email ingresado es inválido</p>`;
+       
+            countSummary.innerHTML = alertSummary;            
                 
             email.value='';            
             email.focus();
@@ -47,7 +51,10 @@ const handleChange = (parm) => {
     if (parm.target.id==='count'){    
         //evaluo q sea numero ()
         if (isNaN(parm.target.value)||parm.target.value.length==0||!Number.isInteger(parseFloat(parm.target.value))) {            
-            alert('La cantidad debe ser un numero entero entre 1 y 10');            
+            //alert('La cantidad debe ser un numero entero entre 1 y 10');            
+            const alertSummary = `
+                <p class="alert alert-danger w-100">La cantidad debe ser un numero entero entre 1 y 10</p>`;
+            countSummary.innerHTML = alertSummary;
             count.value='1';            
             count.focus();
             enableBtnSend();
@@ -55,11 +62,17 @@ const handleChange = (parm) => {
         }
 	    if ( parseInt(parm.target.value)<=0 || parseInt(parm.target.value)>10){
             if (parseInt(parm.target.value)<=0){
-		        alert('La cantidad debe ser mínimo 1');
+		       // alert('La cantidad debe ser mínimo 1');
+                const alertSummary = `
+                    <p class="alert alert-danger w-100">La cantidad debe ser mínimo 1</p>`;
+                countSummary.innerHTML = alertSummary;
                 count.value='1';            
             }
             if (parseInt(parm.target.value)>10){
-		       alert('La cantidad debe ser como máximo 10');
+		      //  alert('La cantidad debe ser como máximo 10');
+                const alertSummary = `
+                    <p class="alert alert-danger w-100">La cantidad debe ser como máximo 10</p>`;                
+                countSummary.innerHTML = alertSummary;
                 count.value='10';            
             }
             count.focus();            
@@ -68,6 +81,7 @@ const handleChange = (parm) => {
 	    }
     }
     enableBtnSend();
+    countSummary.innerHTML = ''
 }
 
 const clearForm = (event) => {
@@ -87,9 +101,10 @@ const getSummary = (event) => {
     const totalDiscount = (valueTicket * percentageDiscount[category.value]) / 100;
     const totalValue = count.value * valueTicket;
     const fianlValue = totalValue -totalDiscount;
-    alert(`Felicidades ${nameUser.value.toUpperCase() } ${lastName.value.toUpperCase()}, está por adquirir ${count.value} tickets categoria ${category.options[category.selectedIndex].text.toUpperCase()}`);
+    //alert(`Felicidades ${nameUser.value.toUpperCase() } ${lastName.value.toUpperCase()}, está por adquirir ${count.value} tickets categoria ${category.options[category.selectedIndex].text.toUpperCase()}`);
     const alertSummary = `
-        <p class="alert alert-success w-100">Total a pagar: $ ${fianlValue} 
+        <p class="alert alert-success w-100">Felicidades ${nameUser.value.toUpperCase() } ${lastName.value.toUpperCase()}, está por adquirir ${count.value} tickets categoria ${category.options[category.selectedIndex].text.toUpperCase()}
+        <br>Total a pagar: $ ${fianlValue} 
         </p>
     `;
 
